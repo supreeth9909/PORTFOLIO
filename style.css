@@ -426,13 +426,15 @@ section {
 }
 
 .section-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.1;
     background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
 }
 
 .section-head::after {
@@ -1162,6 +1164,108 @@ footer {
 }
 
 /* --- Expertise Grid --- */
+/* --- New Editorial Skills Theme --- */
+.skills-editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.skill-category-card {
+    background: #0a0e1a;
+    /* Darker navy */
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 20px;
+    padding: 35px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.skill-category-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+}
+
+.skill-cat-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skills-items-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.skill-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+}
+
+.skill-box:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill-box i {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.skill-box span {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Specific Icon Colors */
+.fa-react {
+    color: #61DAFB;
+}
+
+.fa-node-js {
+    color: #339933;
+}
+
+.fa-envira {
+    color: #47A248;
+}
+
+/* MongoDB */
+.fa-code {
+    color: #3b82f6;
+}
+
+/* General */
+.fa-python {
+    color: #3776AB;
+}
+
+.fa-git-alt {
+    color: #F05032;
+}
+
+@media (max-width: 992px) {
+    .skills-editorial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .expertise-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
