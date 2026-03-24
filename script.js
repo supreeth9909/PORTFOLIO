@@ -65,7 +65,7 @@ magneticElements.forEach(el => {
 });
 
 // Cursor Interaction Effects
-const interactiveElements = document.querySelectorAll('a, button, .skill-tag, .project-card, .contact-link');
+const interactiveElements = document.querySelectorAll('a, button, .skill-tag, .project-card, .contact-link, .museum-card, .cert-pill-box');
 
 interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
@@ -185,6 +185,64 @@ if (navToggle) {
         }
     });
 }
+// Certificate Modal Logic
+const certModal = document.getElementById('certModal');
+const modalBody = document.getElementById('modalBody');
+const closeModal = document.querySelector('.close-modal');
+const certItems = document.querySelectorAll('.museum-card, .cert-pill-box');
+
+if (certItems.length > 0 && certModal) {
+    certItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const certFile = item.getAttribute('data-certificate');
+            if (!certFile) return;
+
+            modalBody.innerHTML = '';
+            const fileExt = certFile.split('.').pop().toLowerCase();
+
+            if (['png', 'jpg', 'jpeg', 'webp', 'gif'].includes(fileExt)) {
+                const img = document.createElement('img');
+                img.src = certFile;
+                img.alt = 'Certificate';
+                modalBody.appendChild(img);
+            } else if (fileExt === 'pdf') {
+                const iframe = document.createElement('iframe');
+                iframe.src = certFile;
+                modalBody.appendChild(iframe);
+            }
+
+            certModal.style.display = 'flex';
+            setTimeout(() => {
+                certModal.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+    });
+
+    const closeCertModal = () => {
+        certModal.classList.remove('active');
+        setTimeout(() => {
+            certModal.style.display = 'none';
+            modalBody.innerHTML = '';
+        }, 300);
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    };
+
+    if (closeModal) {
+        closeModal.addEventListener('click', closeCertModal);
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === certModal) {
+            closeCertModal();
+        }
+    });
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certModal.classList.contains('active')) {
+            closeCertModal();
+        }
+    });
+}
 
 // Final Polish Logic
 document.addEventListener('DOMContentLoaded', () => {
@@ -196,7 +254,12 @@ const createBackToTop = () => {
     btn.className = 'back-to-top';
     btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
     document.body.appendChild(btn);
-    window.addEventListener('scroll', () => { if (window.scrollY > 500) btn.classList.add('visible'); else btn.classList.remove('visible'); });
-    btn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 };
 createBackToTop();
