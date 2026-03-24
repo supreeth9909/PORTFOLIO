@@ -381,11 +381,83 @@ nav {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
+    width: 140%;
+    height: 140%;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
     z-index: 1;
     border-radius: 50%;
+}
+
+/* --- Profile Enhancements --- */
+.orbit-ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: rotate 10s linear infinite;
+    z-index: 1;
+}
+
+.tech-bubble {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: bubble-float 4s ease-in-out infinite;
+}
+
+.tb-1 {
+    top: 10%;
+    right: -15px;
+    animation-delay: 0s;
+}
+
+.tb-2 {
+    bottom: 20%;
+    left: -25px;
+    animation-delay: 1s;
+}
+
+.tb-3 {
+    bottom: 10%;
+    right: -10px;
+    animation-delay: 2s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bubble-float {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.1);
+    }
 }
 
 .hero-badge {
