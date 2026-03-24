@@ -696,6 +696,54 @@ section {
     letter-spacing: 2px;
 }
 
+/* --- Project Link Buttons --- */
+.btn-project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-project-link i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.btn-project-link:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+}
+
+.btn-project-link.demo {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-project-link.demo i {
+    color: white;
+}
+
+.btn-project-link.demo:hover {
+    background: white;
+    color: var(--primary-color);
+    border-color: white;
+}
+
+.btn-project-link.demo:hover i {
+    color: var(--primary-color);
+}
+
 .project-featured-info h3 {
     font-size: 2.2rem;
     margin-bottom: 20px;
